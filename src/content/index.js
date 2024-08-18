@@ -1,10 +1,9 @@
 const counter = document.querySelector(".view-counter");
 
-
 async function updateCounter() {
     try {
         let response = await fetch(
-            "" //visitor counting API endpoint e.g. https://{bigstring}.lambda-url.us-east-1.on.aws/
+            "https://uljl4uzuu9.execute-api.us-east-1.amazonaws.com/prod/visitor" 
         );
         
         if (!response.ok) {
