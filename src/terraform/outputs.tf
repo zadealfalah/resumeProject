@@ -1,7 +1,7 @@
-output "website_domain_name" {
-  description = "Website URL (HTTPS)"
-  value       = module.website.website_domain_name
-}
+# output "website_domain_name" {
+#   description = "Website URL (HTTPS)"
+#   value       = module.website.website_domain_name
+# }
 
 output "website_endpoint" {
   description = "S3 hosting URL (HTTP)"

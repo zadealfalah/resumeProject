@@ -6,9 +6,6 @@ variable "root_domain_name" {
     default = "zadealfalah.com"
 }
 
-variable "bucket_name" {
-    default = "zadealfalah.com"
-}
 
 # variable "visitor_lambda_name" {
 #     default = "visitor-counter-lambda"

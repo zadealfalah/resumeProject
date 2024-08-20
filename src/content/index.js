@@ -3,7 +3,7 @@ const counter = document.querySelector(".view-counter");
 async function updateCounter() {
     try {
         let response = await fetch(
-            "https://uljl4uzuu9.execute-api.us-east-1.amazonaws.com/prod/visitor" 
+            "https://ryv6aoetl7.execute-api.us-east-1.amazonaws.com/prod/visitor"
         );
         
         if (!response.ok) {

@@ -14,3 +14,5 @@
 - Add explicit environments (dev/prod) to modules and main.tf module calls
 - Reformat file references to be generic(e.g. in website/main's uploading of s3 objects)
 - Update errors with GET in API Gateway
+- Reformat .js file to generic URL from output of lambda/outputs.tf
+- Cache busting to ensure latest content is available - can use create-invalidation in CI/CD once there.
