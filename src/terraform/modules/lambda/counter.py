@@ -26,6 +26,12 @@ def lambda_handler(event, context):
         # Return the updated view count
         return {
             'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Origin': 'https://zadealfalah.com',
+                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+                },
+            # 'body': json.dumps(views) 
             'body': json.dumps({'visitorCount': views})
         }
     except (TypeError, ValueError, KeyError) as e:
@@ -33,5 +39,9 @@ def lambda_handler(event, context):
         print(f"Error processing item: {e}")
         return {
             'statusCode': 500,
-            'body': json.dumps({'error': 'Internal server error'})
+            'headers': {
+                'Content-Type': 'application/json'
+            },
+            'body': json.dumps({'error': f'Internal server error. {e}.  Views: {views}'})
         }
+    
