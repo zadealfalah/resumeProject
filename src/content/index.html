@@ -1,85 +1,303 @@
+<!DOCTYPE HTML>
+<!--
+	Prologue by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Zade Alfalah</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css"> 
-</head>
-<div class="stuff">
-  <p class="view-counter">Views: 0</p>
-  <script src="index.js"></script>
-  <br><br>
-  <h1>Zade Alfalah</h1>
-  <h4>US Citizen &#10026; (715) 797-5940 &#10026; Eau Claire, WI &#10026; zadealfalah@gmail.com</h4>
-  <hr />
+		<!-- Header -->
+			<div id="header">
 
-  <p class="head", style="color: blue;"><b>EDUCATION</b></p>
-  <hr />
-  <body>
-    <p><b>University of Colorado,</b> Boulder, CO</p>
-    <p class="indent"><b>MS, Data Science</b> - 3.96 GPA <span class="pull-right">Dec. 2022</span></p>
-    <p class="indent"><b>BA, Physics, Mathematics, Astronomy</b> <span class="pull-right">Jan. 2020</span></p>
-  </body>
+				<div class="top">
+
+					<!-- Logo -->
+						<div id="logo">
+							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<h1 id="title">Zade Alfalah</h1>
+							<p>Data Nerd</p> 
+						</div>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
+                                <li><a href="#resume" id="resume-link"><span class= "icon solid fa-resume">Resume</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
+								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
+							</ul>
+						</nav>
+
+				</div>
+
+				<div class="bottom">
+
+					<!-- Social Icons -->
+						<ul class="icons">
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">Github</span></a></li>
+							<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						</ul>
+
+				</div>
+
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- Intro -->
+					<section id="top" class="one dark cover">
+						<div class="container">
+
+							<header> <!-- Replace the href content with the chaning jobs e.g. data analysis, engineering, etc. Say 'I can help you with....' instead of 'am a'-->
+								<h2 class="alt">Hi! I'm <strong>Zade</strong>, let me help you with your</h2>
+                                <h2>
+                                <span id="typed"></span>
+                                <!-- Load library from the CDN -->
+                                <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+                                <!-- Setup and start animation! -->
+                                <script>
+                                </script>
+                                </h2>
+								<p>Ligula scelerisque justo sem accumsan diam quis<br />
+								vitae natoque dictum sollicitudin elementum.</p>
+							</header>
+
+							<footer>
+								<a href="#resume" class="button scrolly">See My Resume</a>
+							</footer>
+
+						</div>
+					</section>
 
 
-  <p class="head", style="color: blue;"><b>WORK EXPERIENCE</b></p>
-  <hr />
-  <body>
-    <p><b>Legrand</b>, Eau Claire, WI</p>
-    <p class="indent"><b>Data Analyst</b> <span class="pull-right">Jun. 2023 - Dec. 2023</span></p>
-    <ul class="bullet">
-      <li>Developed models and forecasts for stocking predictions</li>
-      <li>Led weekly strategy discussions based off of created models and analysis</li>
-      <li>Built document ingestion pipelines automating previously manual tasks, saving over $30,000/yr</li>
-      <li>Designed and deployed sales dashboards using Power BI</li>
-      <li>Introduced MySQL architecture reducing complexity and cost of analysis</li>
-    </ul>
-    <p><b>Laboratory for Atmospheric and Space Physics</b>, Boulder, CO</p>
-    <p class="indent"><b>Junior Data Scientist</b> <span class="pull-right">Sep. 2017 - Dec. 2019</span></p>
-    <ul class="bullet">
-      <li>Architected ETL pipelines for processing large quantities of imagery data</li>
-      <li>Optimized imagery analysis scripts, reducing compute times by 22%</li>
-      <li>Built visualizations for conference presentations utilizing seaborn and matplotlib</li>
-      <li>Onboarded junior scientists utilizing self-created documentation</li>
-    </ul>
-  </body>
+                <!-- Resume -->  
+                    <section id="resume">
+                        <div class = "container">
 
-  <p class="head", style="color: blue;"><b>PERSONAL PROJECTS</b></p>
-  <hr />
-  <body>
-    <p><b>jobReqs</b></p>
-    <p class="indent"><b>Automated Web Scraping and Job Posting Analysis</b></p>
-    <ul class="bullet">
-      <li>Developed and maintained scalable backend for the project pipeline, built on AWS and Docker,
-        running on ECS clusters</li>
-      <li>Integrated open-source LLMs (BERT, Llama) for text classification and entity recognition</li>
-      <li>Employed OpenAI API for zero-shot results, reducing costs</li>
-      <li>Used Ray/Anyscale for distributed training with MLFlow</li>
-      <li>Created API with FastAPI for speedy and efficient querying of model</li>
-    </ul>
-    <p><b>localLibrary</b></p>
-    <p class="indent"><b>Custom Retrieval-Augmented Generation (RAG) Chatbot</b></p>
-    <ul class="bullet">
-      <li>Built a chatbot to help answer questions about books in my library</li>
-      <li>Utilized Langchain with Chroma for vector storage and Ollama as a platform</li>
-      <li>Integrated open-source LLMs (Mistral, Llama 2) incorporating prompt engineering for best results</li>
-    </ul>
-  </body>
+                            <header>
+                                <h2>Resume</h2>
+                                <!-- Download link to pdf of resume -->
+                                <h4><a href="" download="" class="">PDF Download</a></h4>
+                            </header>
 
 
-  <p class="head", style="color: blue;"><b>TOOLS</b></p>
-  <hr />
-  <body>
-    <p><b>Languages:</b> Python, SQL, R, Bash, Git</p>
-    <p><b>Software:</b> AWS, GitHub/GitLab, MySQL, Jupyter, MLFlow, Docker, ArcGIS, Tableau, Power BI, Excel</p>
-    <p><b>Libraries/Frameworks:</b> Pandas/NumPy, NLTK/Spacy, XGBoost, PyTorch, TensorfFlow/Keras, HuggingFace,
-        scikit-learn, Selenium, Airflow, Scrapy, OpenCV, Snowflake, FastAPI, Langchain, Terraform</p>
-  </body>
-</div>
+                            <h1 class="resume-name-header">Zade Alfalah</h1>
+                            <h4>US Citizen | (715) 797-5940 | Eau Claire, WI | zadealfalah@gmail.com</h4>
+                            <hr />
+                            <br>
+                            <p class="resume-section-header"><b>EDUCATION</b></p>
+                            <hr />
+
+                                <p><b>University of Colorado,</b> Boulder, CO</p>
+                                <p><b>MS, Data Science</b> - 3.96 GPA, <span class="pull-right">Dec. 2022</span></p>
+                                <p><b>BA, Physics, Mathematics, Astronomy,</b> <span class="pull-right">Jan. 2020</span></p>
+
+
+                            <br>
+                            <p class="resume-section-header"><b>WORK EXPERIENCE</b></p>
+                            <hr />
+
+                                <p><b><u>Legrand</u></b>, Eau Claire, WI</p>
+                                <p><b><i>Data Analyst</i></b>, <span class="pull-right">Jun. 2023 - Dec. 2023</span></p>
+                                <ul>
+                                <p>Developed models and forecasts for stocking predictions</p>
+                                <p>Led weekly strategy discussions based off of created models and analysis</p>
+                                <p>Built document ingestion pipelines automating previously manual tasks, saving over $30,000/yr</p>
+                                <p>Designed and deployed sales dashboards using Power BI</p>
+                                <p>Introduced MySQL architecture reducing complexity and cost of analysis</p>
+                                </ul>
+                                <br>
+                                <p><b><u>Laboratory for Atmospheric and Space Physics</u></b>, Boulder, CO</p>
+                                <p><b><i>Junior Data Scientist</i></b> <span class="pull-right">Sep. 2017 - Dec. 2019</span></p>
+                                <ul>
+                                <p>Architected ETL pipelines for processing large quantities of imagery data</p>
+                                <p>Optimized imagery analysis scripts, reducing compute times by 22%</p>
+                                <p>Built visualizations for conference presentations utilizing seaborn and matplotlib</>
+                                <p>Onboarded junior scientists utilizing self-created documentation</p>
+                                </ul>
+
+                            <br>
+                            <p class="resume-section-header"><b>PERSONAL PROJECTS</b></p>
+                            <hr />
+
+                                <p><b><u>jobReqs</u></b></p>
+                                <p><b><i>Automated Web Scraping and Job Posting Analysis</i></b></p>
+                                <ul class="bullet">
+                                <p>Developed and maintained scalable backend for the project pipeline, built on AWS and Docker,
+                                    running on ECS clusters</p>
+                                <p>Integrated open-source LLMs (BERT, Llama) for text classification and entity recognition</p>
+                                <p>Employed OpenAI API for zero-shot results, reducing costs</p>
+                                <p>Used Ray/Anyscale for distributed training with MLFlow</p>
+                                <p>Created API with FastAPI for speedy and efficient querying of model</p>
+                                </ul>
+                                <br>
+                                <p><b><u>localLibrary</u></b></p>
+                                <p><b><i>Custom Retrieval-Augmented Generation (RAG) Chatbot</i></b></p>
+                                <ul class="bullet">
+                                <p>Built a chatbot to help answer questions about books in my library</p>
+                                <p>Utilized Langchain with Chroma for vector storage and Ollama as a platform</p>
+                                <p>Integrated open-source LLMs (Mistral, Llama 2) incorporating prompt engineering for best results</p>
+                                </ul>
+
+
+                            <br>
+                            <p class="resume-section-header"><b>TOOLS</b></p>
+                            <hr />
+
+                                <p><b><u>Languages:</u></b> Python, SQL, R, Bash, Git, JavaScript</p>
+                                <p><b><u>Software:</u></b> AWS, GitHub/GitLab, MySQL, Jupyter, MLFlow, Docker, ArcGIS, Tableau, Power BI, Excel</p>
+                                <p><b><u>Libraries/Frameworks:</u></b> Pandas/NumPy, NLTK/Spacy, XGBoost, PyTorch, TensorfFlow/Keras, HuggingFace,
+                                    scikit-learn, Selenium, Airflow, Scrapy, OpenCV, Snowflake, FastAPI, Langchain, Terraform</p>
+
+
+                        </div>
+                    </section>
+
+
+				<!-- Portfolio -->
+					<section id="portfolio" class="three">
+						<div class="container">
+
+							<header>
+								<h2>Portfolio</h2>
+							</header>
+
+							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
+							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
+							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
+							fusce hendrerit lacus ridiculus.</p>
+
+							<div class="row">
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic02.jpg" alt="" /></a>
+										<header>
+											<h3>Ipsum Feugiat</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic03.jpg" alt="" /></a>
+										<header>
+											<h3>Rhoncus Semper</h3>
+										</header>
+									</article>
+								</div>
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
+										<header>
+											<h3>Magna Nullam</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic05.jpg" alt="" /></a>
+										<header>
+											<h3>Natoque Vitae</h3>
+										</header>
+									</article>
+								</div>
+								<div class="col-4 col-12-mobile">
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
+										<header>
+											<h3>Dolor Penatibus</h3>
+										</header>
+									</article>
+									<article class="item">
+										<a href="#" class="image fit"><img src="images/pic07.jpg" alt="" /></a>
+										<header>
+											<h3>Orci Convallis</h3>
+										</header>
+									</article>
+								</div>
+							</div>
+
+						</div>
+					</section>
+
+				<!-- About Me -->
+					<section id="about" class="four">
+						<div class="container">
+
+							<header>
+								<h2>About Me</h2>
+							</header>
+
+							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
+
+							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
+							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
+							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
+							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
+							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
+							ornare iaculis.</p>
+
+						</div>
+					</section>
+
+				<!-- Contact -->
+					<section id="contact" class="five">
+						<div class="container">
+
+							<header>
+								<h2>Contact</h2>
+							</header>
+
+							<p>Elementum sem parturient nulla quam placerat viverra
+							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
+							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
+							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+
+							<form method="post" action="#">
+								<div class="row">
+									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="col-12">
+										<textarea name="message" placeholder="Message"></textarea>
+									</div>
+									<div class="col-12">
+										<input type="submit" value="Send Message" />
+									</div>
+								</div>
+							</form>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+
+				<!-- Copyright -->
+					<ul class="copyright">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+            <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
+
+	</body>
 </html>
-
-
-
-
-

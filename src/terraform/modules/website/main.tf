@@ -5,8 +5,9 @@ data "aws_route53_zone" "zone" {
 
 data "aws_region" "current" {}
 
+# Add pdf as an option once resume.pdf added to assets
 resource "aws_s3_object" "file" {
-  for_each     = fileset("${path.module}/../../../content", "**/*.{html,css,js}")
+  for_each     = fileset("${path.module}/../../../content", "**/*.{html,css,js,jpg}")
   bucket       = aws_s3_bucket.hosting.id
   key          = replace(each.value, "^../../../content/", "")
   source       = "${path.module}/../../../content/${each.value}"
