@@ -6,7 +6,7 @@
 
 /* vars for 'Typed' */
 var typed = new Typed('#typed', {
-    strings: ['Data Analysis', 'Data Engineering', 'Data Science', 'Machine Learning'],
+    strings: ['Data Analysis', 'Data Engineering', 'Data Science', 'Machine Learning', 'Cloud Computing', 'Data Warehousing'],
     typeSpeed: 50,
     backDelay: 1000,
     backSpeed: 50,

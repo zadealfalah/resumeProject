@@ -6,6 +6,10 @@ variable "root_domain_name" {
     default = "zadealfalah.com"
 }
 
+variable "lambda_exec_role_name" {
+  description = "The name of the IAM role used by my lambdas"
+  type = string
+}
 
 # variable "visitor_lambda_name" {
 #     default = "visitor-counter-lambda"

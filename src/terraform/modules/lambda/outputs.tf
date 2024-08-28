@@ -9,6 +9,10 @@ output "visitor_lambda_function_name" {
   value = aws_lambda_function.update_visitor_count.function_name
 }
 
+output "lambda_exec_role_name" {
+    value = aws_iam_role.lambda_exec.name
+}
+
 
 # # Should use this in my CICD to change the counter.py URL
 # output "apigw_base_url" {

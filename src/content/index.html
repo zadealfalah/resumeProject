@@ -20,7 +20,7 @@
 
 					<!-- Logo -->
 						<div id="logo">
-							<span class="image avatar48"><img src="images/avatar.jpg" alt="" /></span>
+							<span class="image avatar48"><img src="images/profile.jpg" alt="" /></span>
 							<h1 id="title">Zade Alfalah</h1>
 							<p>Data Nerd</p> 
 						</div>
@@ -29,9 +29,9 @@
 						<nav id="nav">
 							<ul>
 								<li><a href="#top" id="top-link"><span class="icon solid fa-home">Intro</span></a></li>
-                                <li><a href="#resume" id="resume-link"><span class= "icon solid fa-resume">Resume</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
 								<li><a href="#about" id="about-link"><span class="icon solid fa-user">About Me</span></a></li>
+                                <li><a href="#resume" id="resume-link"><span class= "icon solid fa-file">Resume</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link"><span class="icon solid fa-th">Portfolio</span></a></li>
 								<li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
 							</ul>
 						</nav>
@@ -71,8 +71,7 @@
                                 <script>
                                 </script>
                                 </h2>
-								<p>Ligula scelerisque justo sem accumsan diam quis<br />
-								vitae natoque dictum sollicitudin elementum.</p>
+								<p>The technical know-how to make your data shine!</p>
 							</header>
 
 							<footer>
@@ -82,6 +81,26 @@
 						</div>
 					</section>
 
+				<!-- About Me -->
+                <section id="about" class="four">
+                    <div class="container">
+
+                        <header>
+                            <h2>About Me</h2>
+                        </header>
+
+                        <!-- <a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a> -->
+
+                        <p>With a solid foundation in Physics, Mathematics, and Astronomy from my undergraduate studies, 
+                            complemented by a Master of Science in Data Science, I bring a unique blend of analytical rigor 
+                            and technical expertise to the table. My experience in leveraging Python development, database architecture, 
+                            and data analytics enables me to uncover insights and drive impactful decisions. Let's connect and discuss how I can 
+                            contribute to your data-driven initiatives!
+                        </p>
+
+                    </div>
+                </section>
+
 
                 <!-- Resume -->  
                     <section id="resume">
@@ -90,9 +109,8 @@
                             <header>
                                 <h2>Resume</h2>
                                 <!-- Download link to pdf of resume -->
-                                <h4><a href="" download="" class="">PDF Download</a></h4>
+                                <h4><a href="assets/ZadeAlfalahResume-7-9.pdf" download="ZadeAlfalah_Resume">PDF Download</a></h4>
                             </header>
-
 
                             <h1 class="resume-name-header">Zade Alfalah</h1>
                             <h4>US Citizen | (715) 797-5940 | Eau Claire, WI | zadealfalah@gmail.com</h4>
@@ -175,10 +193,7 @@
 								<h2>Portfolio</h2>
 							</header>
 
-							<p>Vitae natoque dictum etiam semper magnis enim feugiat convallis convallis
-							egestas rhoncus ridiculus in quis risus amet curabitur tempor orci penatibus.
-							Tellus erat mauris ipsum fermentum etiam vivamus eget. Nunc nibh morbi quis
-							fusce hendrerit lacus ridiculus.</p>
+							<p>Below are some example projects that I've done covering a wide range of fields.</p>
 
 							<div class="row">
 								<div class="col-4 col-12-mobile">
@@ -195,7 +210,7 @@
 										</header>
 									</article>
 								</div>
-								<div class="col-4 col-12-mobile">
+								<!-- <div class="col-4 col-12-mobile">
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic04.jpg" alt="" /></a>
 										<header>
@@ -208,7 +223,7 @@
 											<h3>Natoque Vitae</h3>
 										</header>
 									</article>
-								</div>
+								</div> -->
 								<div class="col-4 col-12-mobile">
 									<article class="item">
 										<a href="#" class="image fit"><img src="images/pic06.jpg" alt="" /></a>
@@ -228,25 +243,6 @@
 						</div>
 					</section>
 
-				<!-- About Me -->
-					<section id="about" class="four">
-						<div class="container">
-
-							<header>
-								<h2>About Me</h2>
-							</header>
-
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
-							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
-							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
-							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
-							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
-							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
-							ornare iaculis.</p>
-
-						</div>
-					</section>
 
 				<!-- Contact -->
 					<section id="contact" class="five">
@@ -256,17 +252,15 @@
 								<h2>Contact</h2>
 							</header>
 
-							<p>Elementum sem parturient nulla quam placerat viverra
-							mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-							donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-							orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+							<p>Please reach out below with any and all of your data related questions!</p>
 
-							<form method="post" action="#">
+							<!-- <form method="post" action="#"> -->
+                            <form id="contact-form">
 								<div class="row">
-									<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-									<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="name-input" placeholder="Name" /></div>
+									<div class="col-6 col-12-mobile"><input type="text" name="email-input" placeholder="Email" /></div>
 									<div class="col-12">
-										<textarea name="message" placeholder="Message"></textarea>
+										<textarea name="message-input" placeholder="Message"></textarea>
 									</div>
 									<div class="col-12">
 										<input type="submit" value="Send Message" />
@@ -298,6 +292,7 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
             <!-- <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script> -->
+            <script src ="assets/js/jquery.contactme.js"></script>
 
 	</body>
 </html>

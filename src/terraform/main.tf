@@ -16,8 +16,8 @@ provider "aws" {
 
 module "website" {
     source = "./modules/website"
+    lambda_exec_role_name = module.lambda.lambda_exec_role_name
 }
-
 
 module "database" {
     source = "./modules/database"
