@@ -12,5 +12,5 @@
 - Add tests for CI/CD (front and back end)
 - Update website, create images for portfolio section and small descriptions
 - Add SES tracking/configs
-- After SES/DKIM verified, test submission form
+- After SES/DKIM verified, test submission form, add CORS
 - Add DB for submissions with sender/message/time, etc.
