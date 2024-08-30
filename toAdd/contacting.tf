@@ -70,3 +70,47 @@ resource "aws_lambda_permission" "contact_api_permission" {
   principal = "apigateway.amazonaws.com"
   source_arn = "arn:aws:execute-api:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:${aws_api_gateway_rest_api.contact_api.id}/*/${aws_api_gateway_method.contact_post_method.http_method}${aws_api_gateway_resource.contact_resource.path}"
 }
+
+
+
+# CORS
+
+resource "aws_api_gateway_method" "contact_method" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id   = aws_api_gateway_resource.contact_resource.id
+  http_method   = "OPTIONS"
+  authorization = "NONE"
+}
+resource "aws_api_gateway_integration" "contact_integration" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id   = aws_api_gateway_resource.contact_resource.id
+  http_method = aws_api_gateway_method.contact_method.http_method
+  content_handling = "CONVERT_TO_TEXT"
+  type = "MOCK"
+  request_templates = {
+    "application/josn" = "{ \"statusCode\": 200 }"
+  }
+}
+resource "aws_api_gateway_integration_response" "cors_integration_response" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id   = aws_api_gateway_resource.contact_resource.id
+  http_method = aws_api_gateway_method.contact_method.http_method
+  status_code = 200
+  response_parameters = local.integration_response_parameters
+  depends_on = [ 
+    aws_api_gateway_integration.contact_integration,
+    aws_api_gateway_method_response.contact_response
+   ]
+}
+
+resource "aws_api_gateway_method_response" "contact_response" {
+  rest_api_id = aws_api_gateway_rest_api.contact_api.id
+  resource_id   = aws_api_gateway_resource.contact_resource.id
+  http_method = aws_api_gateway_method.contact_method.http_method
+  status_code = 200
+  response_parameters = local.method_response_parameters
+  response_models = {
+    "application/json" = "Empty"
+  }
+  depends_on = [ aws_api_gateway_method.contact_method ]
+}

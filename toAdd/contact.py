@@ -32,6 +32,11 @@ def lambda_handler(event, context):
         # Requires headers for API gateway to function I think
         return {
             'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Origin': 'https://zadealfalah.com',
+                'Access-Control-Allow-Methods': 'OPTIONS,POST,GET'
+                },
             'body': json.dumps('Form submitted successfully!'),
         }
     except Exception as e:

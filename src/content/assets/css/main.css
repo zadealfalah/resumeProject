@@ -2646,3 +2646,48 @@ p.resume-section-header b {
 h1.resume-name-header {
     font-size: 2em !important;
 }
+
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .project-box {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 300px; /* Ensure all boxes have a fixed height */
+  }
+  
+  .project-image {
+    flex: 2;
+    overflow: hidden;
+  }
+  
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .project-text {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+  }
+  
+  .project-text p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+  }
