@@ -1,23 +1,23 @@
 # Zip the file itself, rename it and save in same folder
 data "archive_file" "lambda" {
-    type = "zip"
-    source_file = "${path.module}/counter.py"
-    output_path = "${path.module}/lambda_function_payload.zip"
+  type        = "zip"
+  source_file = "${path.module}/counter.py"
+  output_path = "${path.module}/lambda_function_payload.zip"
 }
 
 
 
 resource "aws_lambda_function" "update_visitor_count" {
-  filename = data.archive_file.lambda.output_path
-  function_name = "view_counter"
-  role = aws_iam_role.lambda_exec.arn
-  handler = "counter.lambda_handler"
-  runtime = "python3.10"
-  timeout = 30
-  source_code_hash = filebase64sha256(data.archive_file.lambda.output_path) 
+  filename         = data.archive_file.lambda.output_path
+  function_name    = "view_counter"
+  role             = aws_iam_role.lambda_exec.arn
+  handler          = "counter.lambda_handler"
+  runtime          = "python3.10"
+  timeout          = 30
+  source_code_hash = filebase64sha256(data.archive_file.lambda.output_path)
   environment {
     variables = {
-        DYNAMODB_TABLE_NAME = var.dynamodb_table_name
+      DYNAMODB_TABLE_NAME = var.dynamodb_table_name
     }
   }
 }
@@ -41,8 +41,8 @@ resource "aws_iam_role" "lambda_exec" {
 }
 
 resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
-  name   = "lambda-dynamodb-policy"
-  role   = aws_iam_role.lambda_exec.id
+  name = "lambda-dynamodb-policy"
+  role = aws_iam_role.lambda_exec.id
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -67,7 +67,7 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
 
 # Cloudwatch log group
 resource "aws_cloudwatch_log_group" "visitor_counter_logging" {
-  name = "/lambda/${aws_lambda_function.update_visitor_count.function_name}"
+  name              = "/lambda/${aws_lambda_function.update_visitor_count.function_name}"
   retention_in_days = 30
 }
 
@@ -89,7 +89,7 @@ resource "aws_api_gateway_resource" "visitor_resource" {
 }
 
 resource "aws_api_gateway_method" "get_method" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
+  rest_api_id   = aws_api_gateway_rest_api.visitor_api.id
   resource_id   = aws_api_gateway_resource.visitor_resource.id
   http_method   = "GET"
   authorization = "NONE"
@@ -124,57 +124,57 @@ resource "aws_api_gateway_integration_response" "integration_response" {
   resource_id = aws_api_gateway_resource.visitor_resource.id
   http_method = aws_api_gateway_method.get_method.http_method
   status_code = aws_api_gateway_method_response.response_200.status_code
-#   response_templates = {
-#     "application/json" = 
-#   }
+  #   response_templates = {
+  #     "application/json" = 
+  #   }
 }
 
 # Enable CORS
 resource "aws_api_gateway_method" "_" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
+  rest_api_id   = aws_api_gateway_rest_api.visitor_api.id
   resource_id   = aws_api_gateway_resource.visitor_resource.id
   http_method   = "OPTIONS"
   authorization = "NONE"
 }
 resource "aws_api_gateway_integration" "_" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
-  resource_id   = aws_api_gateway_resource.visitor_resource.id
-  http_method = aws_api_gateway_method._.http_method
+  rest_api_id      = aws_api_gateway_rest_api.visitor_api.id
+  resource_id      = aws_api_gateway_resource.visitor_resource.id
+  http_method      = aws_api_gateway_method._.http_method
   content_handling = "CONVERT_TO_TEXT"
-  type = "MOCK"
+  type             = "MOCK"
   request_templates = {
     "application/josn" = "{ \"statusCode\": 200 }"
   }
 }
 resource "aws_api_gateway_integration_response" "_" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
-  resource_id   = aws_api_gateway_resource.visitor_resource.id
-  http_method = aws_api_gateway_method._.http_method
-  status_code = 200
+  rest_api_id         = aws_api_gateway_rest_api.visitor_api.id
+  resource_id         = aws_api_gateway_resource.visitor_resource.id
+  http_method         = aws_api_gateway_method._.http_method
+  status_code         = 200
   response_parameters = local.integration_response_parameters
-  depends_on = [ 
+  depends_on = [
     aws_api_gateway_integration._,
     aws_api_gateway_method_response._
-   ]
+  ]
 }
 
 resource "aws_api_gateway_method_response" "_" {
-  rest_api_id = aws_api_gateway_rest_api.visitor_api.id
-  resource_id   = aws_api_gateway_resource.visitor_resource.id
-  http_method = aws_api_gateway_method._.http_method
-  status_code = 200
+  rest_api_id         = aws_api_gateway_rest_api.visitor_api.id
+  resource_id         = aws_api_gateway_resource.visitor_resource.id
+  http_method         = aws_api_gateway_method._.http_method
+  status_code         = 200
   response_parameters = local.method_response_parameters
   response_models = {
     "application/json" = "Empty"
   }
-  depends_on = [ aws_api_gateway_method._ ]
+  depends_on = [aws_api_gateway_method._]
 }
 
 # Deploy the apigw
 resource "aws_api_gateway_deployment" "visitor_deployment" {
-  depends_on = [ aws_api_gateway_integration.integration ]
+  depends_on  = [aws_api_gateway_integration.integration]
   rest_api_id = aws_api_gateway_rest_api.visitor_api.id
-  stage_name = "test"
+  stage_name  = "test"
 }
 
 

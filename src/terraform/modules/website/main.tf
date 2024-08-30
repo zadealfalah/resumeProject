@@ -1,5 +1,5 @@
 data "aws_route53_zone" "zone" {
-  name         = "${var.root_domain_name}"
+  name         = var.root_domain_name
   private_zone = false
 }
 
@@ -33,15 +33,15 @@ resource "aws_s3_bucket_website_configuration" "static_site" {
   index_document {
     suffix = "index.html"
   }
-#   error_document {
-#     key = "error.html"
-#   }
+  #   error_document {
+  #     key = "error.html"
+  #   }
 }
 
 
 resource "aws_s3_bucket_policy" "hosting_bucket_policy" {
-  depends_on = [ aws_s3_bucket_public_access_block.hosting_public_access ]
-  bucket = aws_s3_bucket.hosting.id
+  depends_on = [aws_s3_bucket_public_access_block.hosting_public_access]
+  bucket     = aws_s3_bucket.hosting.id
   policy = jsonencode(
     {
       "Version" : "2012-10-17",
@@ -59,7 +59,7 @@ resource "aws_s3_bucket_policy" "hosting_bucket_policy" {
 }
 
 resource "aws_acm_certificate" "ssl_cert" {
-  domain_name = var.root_domain_name
+  domain_name       = var.root_domain_name
   validation_method = "DNS"
   lifecycle {
     create_before_destroy = true
@@ -67,7 +67,7 @@ resource "aws_acm_certificate" "ssl_cert" {
 }
 
 resource "aws_route53_record" "ssl_cert_validation_records" {
-for_each = {
+  for_each = {
     for dvo in aws_acm_certificate.ssl_cert.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
@@ -89,15 +89,15 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
     origin_id   = local.s3_origin_id
 
     custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
-      origin_read_timeout = 30
+      http_port                = 80
+      https_port               = 443
+      origin_protocol_policy   = "http-only"
+      origin_ssl_protocols     = ["SSLv3", "TLSv1", "TLSv1.1", "TLSv1.2"]
+      origin_read_timeout      = 30
       origin_keepalive_timeout = 5
     }
     connection_attempts = 3
-    connection_timeout = 10
+    connection_timeout  = 10
   }
 
   enabled             = true
@@ -123,10 +123,10 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
     min_ttl                = 0
     default_ttl            = 3600
     max_ttl                = 86400
-    compress = true
+    compress               = true
   }
 
-#   price_class = "PriceClass_All"
+  #   price_class = "PriceClass_All"
 
   restrictions {
     geo_restriction {
@@ -135,30 +135,30 @@ resource "aws_cloudfront_distribution" "static_site_distribution" {
   }
 
 
-#  The viewer_certificate is for ssl certificate settings configured via the AWS Console.
+  #  The viewer_certificate is for ssl certificate settings configured via the AWS Console.
   viewer_certificate {
     cloudfront_default_certificate = false
-    ssl_support_method  = "sni-only"
-    acm_certificate_arn = aws_acm_certificate.ssl_cert.arn
-    minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method             = "sni-only"
+    acm_certificate_arn            = aws_acm_certificate.ssl_cert.arn
+    minimum_protocol_version       = "TLSv1.2_2021"
   }
 }
 
 resource "aws_route53_record" "landing_page_A_record" {
   zone_id = data.aws_route53_zone.zone.zone_id
-  name = var.root_domain_name
-  type = "A"
+  name    = var.root_domain_name
+  type    = "A"
 
   alias {
-    name = aws_cloudfront_distribution.static_site_distribution.domain_name
-    zone_id = "Z2FDTNDATAQYW2" # Cloudfront distibution ID
+    name                   = aws_cloudfront_distribution.static_site_distribution.domain_name
+    zone_id                = "Z2FDTNDATAQYW2" # Cloudfront distibution ID
     evaluate_target_health = false
   }
 }
 
 
 resource "aws_acm_certificate_validation" "validate" {
-  certificate_arn = aws_acm_certificate.ssl_cert.arn
+  certificate_arn         = aws_acm_certificate.ssl_cert.arn
   validation_record_fqdns = [for record in aws_route53_record.ssl_cert_validation_records : record.fqdn]
   timeouts {
     create = "5m"
@@ -174,9 +174,9 @@ resource "aws_ses_domain_identity" "ses_domain" {
 # SES domain DNS 
 resource "aws_route53_record" "ses_domain_verification" {
   zone_id = data.aws_route53_zone.zone.zone_id
-  name = "_amazonses.${aws_ses_domain_identity.ses_domain.domain}"
-  type = "TXT"
-  ttl = 1000
+  name    = "_amazonses.${aws_ses_domain_identity.ses_domain.domain}"
+  type    = "TXT"
+  ttl     = 1000
   records = [aws_ses_domain_identity.ses_domain.verification_token]
 }
 
@@ -187,11 +187,11 @@ resource "aws_ses_domain_dkim" "ses_dkim_verification" {
 
 # SES DKIM DNS records
 resource "aws_route53_record" "ses_dkim_verification" {
-  count = 1
+  count   = 1
   zone_id = data.aws_route53_zone.zone.zone_id
-  name = "${aws_ses_domain_dkim.ses_dkim_verification.dkim_tokens[count.index]}.${aws_ses_domain_identity.ses_domain.domain}"
-  type = "CNAME"
-  ttl = 1000
+  name    = "${aws_ses_domain_dkim.ses_dkim_verification.dkim_tokens[count.index]}.${aws_ses_domain_identity.ses_domain.domain}"
+  type    = "CNAME"
+  ttl     = 1000
   records = [aws_ses_domain_dkim.ses_dkim_verification.dkim_tokens[count.index]]
 }
 
@@ -199,17 +199,17 @@ resource "aws_route53_record" "ses_dkim_verification" {
 resource "aws_iam_policy" "ses_sending_policy" {
   name        = "SES_Send_Email"
   description = "Policy to allow sending emails using SES"
-  policy      = jsonencode({
+  policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
       {
-        Effect = "Allow"
-        Action = "ses:SendEmail"
+        Effect   = "Allow"
+        Action   = "ses:SendEmail"
         Resource = "*"
       },
       {
-        Effect = "Allow"
-        Action = "ses:SendRawEmail"
+        Effect   = "Allow"
+        Action   = "ses:SendRawEmail"
         Resource = "*"
       }
     ]
@@ -219,7 +219,7 @@ resource "aws_iam_policy" "ses_sending_policy" {
 # Attach above policy
 resource "aws_iam_role_policy_attachment" "ses_policy_attachment" {
   policy_arn = aws_iam_policy.ses_sending_policy.arn
-  role = var.lambda_exec_role_name
+  role       = var.lambda_exec_role_name
 }
 
 # SES event tracking and configs can come later.  Added to to-dos

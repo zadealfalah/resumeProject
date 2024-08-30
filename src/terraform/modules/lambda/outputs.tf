@@ -6,11 +6,11 @@
 
 output "visitor_lambda_function_name" {
   description = "Name of the Lambda Function for visitor counting"
-  value = aws_lambda_function.update_visitor_count.function_name
+  value       = aws_lambda_function.update_visitor_count.function_name
 }
 
 output "lambda_exec_role_name" {
-    value = aws_iam_role.lambda_exec.name
+  value = aws_iam_role.lambda_exec.name
 }
 
 

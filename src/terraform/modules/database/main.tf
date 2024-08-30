@@ -1,12 +1,12 @@
 resource "aws_dynamodb_table" "visitor_table" {
-  name              = "${var.dynamodb_table_name}"
-  billing_mode      = "PAY_PER_REQUEST"
-  hash_key          = "id"  # Primary key 
-#   range_key         =  # Sort key, unneeded for now. could use timestamp when expanding project
+  name         = var.dynamodb_table_name
+  billing_mode = "PAY_PER_REQUEST"
+  hash_key     = "id" # Primary key 
+  #   range_key         =  # Sort key, unneeded for now. could use timestamp when expanding project
 
   attribute {
     name = "id"
-    type = "S"  # String type
+    type = "S" # String type
   }
 }
 

@@ -9,6 +9,6 @@ output "website_endpoint" {
 }
 
 output "acm_certificate_arn" {
-    description = "The ARN of the ACM Certificate ARN"
-    value       = aws_acm_certificate.ssl_cert.arn
+  description = "The ARN of the ACM Certificate ARN"
+  value       = aws_acm_certificate.ssl_cert.arn
 }

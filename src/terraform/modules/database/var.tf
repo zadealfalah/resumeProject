@@ -1,3 +1,3 @@
 variable "dynamodb_table_name" {
-    default = "visitor_table"
+  default = "visitor_table"
 }
