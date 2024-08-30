@@ -12,39 +12,39 @@ expanded to include more than just the resume allowing me to showcase other AWS 
 My current goals for the finished product are listed [below](#project-goals):
 
 ## Project Goals
-- [] Complete website with Terraform
+- [ ] Complete website with Terraform
   - [x] Create static website w/ S3
   - [x] Configure website with custom domain
   - [x] Add proper permissions between resources
-  - [] Configure cloudfront distribution
+  - [ ] Configure cloudfront distribution
     - [x] Cloudfront for hosting via Route53
-    - [] Cache busting for proper updating without invalidations
-  - [] Complete 'contact' page
+    - [ ] Cache busting for proper updating without invalidations
+  - [ ] Complete 'contact' page
     - [x] Terraform for SES
     - [x] Terraform for contact Lambda
     - [x] Lambda creation/deployment
     - [x] Create HTML for contact page
     - [x] Create JS for contact page
-    - [] Un-sandbox for SES permissions
-  - [] Add visitor counter
+    - [ ] Un-sandbox for SES permissions
+  - [ ] Add visitor counter
     - [x] Create visitor counter lambda
     - [x] Create visitor counter html
     - [x] Create visitor counter database (dynamodb)
     - [x] Create visior counter JS
-    - [] Decide where to place counter in HTML
-  - [] Add logging outside of AWS cloudwatch
-  - [] Add custom 404 html
-    - [] Decide on layout of 404 document
-  - [] Create CI/CD for website
-    - [] Inside of CI/CD Take outputs of TF as inputs for python
-  - [] Separate Terraform modules further
-    - [] Split 'website' into 's3' and 'networking'
-    - [] Split 'lambda' into lambdas for each resource
-  - [] Update portfolio section 
-    - [] Clean up more projects to presentable state
-- [] Create a BI output
-  - [] Decide on tooling to use.  AWS tool, Power BI, Tableau, etc.
-- [] Add snowplow integration for further analysis project
+    - [ ] Decide where to place counter in HTML
+  - [ ] Add logging outside of AWS cloudwatch
+  - [ ] Add custom 404 html
+    - [ ] Decide on layout of 404 document
+  - [ ] Create CI/CD for website
+    - [ ] Inside of CI/CD Take outputs of TF as inputs for python
+  - [ ] Separate Terraform modules further
+    - [ ] Split 'website' into 's3' and 'networking'
+    - [ ] Split 'lambda' into lambdas for each resource
+  - [ ] Update portfolio section 
+    - [ ] Clean up more projects to presentable state
+- [ ] Create a BI output
+  - [ ] Decide on tooling to use.  AWS tool, Power BI, Tableau, etc.
+- [ ] Add snowplow integration for further analysis project
 
 ## To Do:
 Below is a sort of re-hash of the above project goals with more specific notes to help me remember what needs to be done.
