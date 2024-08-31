@@ -1,0 +1,12 @@
+repos:
+- repo: https://github.com/psf/black
+  rev: 23.9.1  # Use the latest version or the version you need
+  hooks:
+  - id: black
+    args: ["--line-length=88"]
+
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 6.1.0  # Use the latest version or the version you need
+  hooks:
+  - id: flake8
+    args: ["--max-line-length=88"]
