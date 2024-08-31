@@ -56,11 +56,10 @@ jobs:
       working-directory: src/terraform
       run: terraform plan
 
-    # Don't apply during testing
-    # - name: Terraform Apply
-    #   working-directory: src/terraform
-    #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    #   run: terraform apply -auto-approve
+    - name: Terraform Apply
+      working-directory: src/terraform
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -auto-approve
 
   python-style-check:
     # Add pre-commit hooks, use this as failsafe
