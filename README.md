@@ -1,5 +1,5 @@
 # resumeProject
-
+![CI/CD Pipeline](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg)
 ## Table of Contents
 * [General Info](#general-info)
 * [Project Goals](#project-goals)
@@ -38,15 +38,16 @@ My current goals for the finished product are listed [below](#project-goals):
   - [ ] Create CI/CD for website
     - [ ] Inside of CI/CD Take outputs of TF as inputs for python
     - [ ] Use IAM roles for GitHub Actions / AWS via Terraform
-      - [ ] Create OIDC provider trust relationship
-      - [ ] Scope IAM role trust
-      - [ ] Update Actions workflow file
+      - [x] Create OIDC provider trust relationship
+      - [ ] Scope IAM role trust to least privilege
+      - [x] Update Actions workflow file
       - [ ] Audit role w/ Amazon CloudTrail logs
   - [ ] Separate Terraform modules further
     - [ ] Split 'website' into 's3' and 'networking'
     - [ ] Split 'lambda' into lambdas for each resource
   - [ ] Update portfolio section 
     - [ ] Clean up more projects to presentable state
+    - [ ] Find more images to represent the chosen project(s)
 - [ ] Create a BI output
   - [ ] Decide on tooling to use.  AWS tool, Power BI, Tableau, etc.
 - [ ] Add snowplow integration for further analysis project

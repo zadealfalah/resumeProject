@@ -31,14 +31,13 @@ jobs:
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: ${{ env.AWS_REGION }}
     
-    - name: Test AWS WhoAmI
-      run: |
-        aws sts get-caller-identity
+    # - name: Test AWS WhoAmI
+    #   run: |
+    #     aws sts get-caller-identity
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
-      # with:
-      #   terraform_version: 4.16.0 # Project uses ~> 4.16 atm.
+
 
     - name: Terraform Init
       working-directory: src/terraform
