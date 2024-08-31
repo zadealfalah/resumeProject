@@ -19,8 +19,8 @@ jobs:
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
-      with:
-        terraform_version: 4.16.0 # Project uses ~> 4.16 atm.
+      # with:
+      #   terraform_version: 4.16.0 # Project uses ~> 4.16 atm.
 
     - name: Terraform Init
       run: terraform init
