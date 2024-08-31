@@ -5,7 +5,12 @@ terraform {
       version = "~> 4.16"
     }
   }
-
+  backend "s3" {
+    bucket = "web-terraform-tfstate"
+    key    = "terraform.tfstate"
+    region = "us-east-1"
+    encrypt = true
+  }
   required_version = ">= 1.2.0"
 }
 
