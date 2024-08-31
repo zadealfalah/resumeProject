@@ -56,6 +56,7 @@ Below is a sort of re-hash of the above project goals with more specific notes t
 - Add explicit environments (dev/prod) to modules and main.tf module calls
 - Reformat file references to be generic(e.g. in website/main's uploading of s3 objects, .js file)
 - Add tests for CI/CD (front and back end)
+ - For pipeline.yml, add python version as an env variable.  Also change terraform to reference.  Can use a text file or env variable
 - Update website, create images for portfolio section and small descriptions
   - Create images for portfolio section, add small descriptions of projects
   - Cache busting to ensure latest content (in CI/CD or cloudfront)

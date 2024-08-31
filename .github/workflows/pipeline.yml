@@ -1,0 +1,78 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    name: Terraform Plan & Apply
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v2
+      with:
+        terraform_version: 4.16.0 # Project uses ~> 4.16 atm.
+
+    - name: Terraform Init
+      run: terraform init
+    
+    - name: Terraform Format
+      run: terraform fmt -recursive
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Plan
+      run: terraform plan
+
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      run: terraform apply -auto-approve
+
+  python-style-check:
+    name: Check Python Style
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Flake8
+      run: pip install flake8
+
+    - name: Run Flake8
+      run: flake8 resume_proj/src/terraform/modules/lambda #Other folder paths can be added as needed, space delimited
+
+  # python-tests:
+  #   name: Run Python Tests
+  #   runs-on: ubuntu-latest
+  #   needs: terraform
+
+  #   steps:
+  #   - name: Checkout Code
+  #     uses: actions/checkout@v3
+
+    # - name: Set up Python
+    #   uses: actions/setup-python@v4
+    #   with:
+    #     python-version: '3.11'
+
+    # - name: Install Dependencies
+    #   run: pip install pytest
+
+    # - name: Run Pytest
+    #   run: pytest proj/src/pytests/tests
