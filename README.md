@@ -37,6 +37,11 @@ My current goals for the finished product are listed [below](#project-goals):
     - [ ] Decide on layout of 404 document
   - [ ] Create CI/CD for website
     - [ ] Inside of CI/CD Take outputs of TF as inputs for python
+    - [ ] Use IAM roles for GitHub Actions / AWS via Terraform
+      - [ ] Create OIDC provider trust relationship
+      - [ ] Scope IAM role trust
+      - [ ] Update Actions workflow file
+      - [ ] Audit role w/ Amazon CloudTrail logs
   - [ ] Separate Terraform modules further
     - [ ] Split 'website' into 's3' and 'networking'
     - [ ] Split 'lambda' into lambdas for each resource

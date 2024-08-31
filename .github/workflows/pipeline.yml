@@ -8,6 +8,11 @@ on:
     branches:
       - main
 
+env: 
+  AWS_REGION : "us-east-1"
+
+
+
 jobs:
   terraform:
     name: Terraform Plan & Apply
@@ -16,6 +21,17 @@ jobs:
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: ${{ secrets.AWS_IAM_ARN }}
+        role-session-name: GitHub_to_AWS_via_FederatedOIDC
+        aws-region: ${{ env.AWS_REGION }}
+    
+    - name: Test AWS WhoAmI
+      run: |
+        aws sts get-caller-identity
 
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
