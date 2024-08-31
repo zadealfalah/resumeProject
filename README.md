@@ -1,5 +1,7 @@
-# resumeProject
 ![CI/CD Pipeline](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg)
+# resumeProject
+An online resume currently deployed on AWS via Terraform.
+
 ## Table of Contents
 * [General Info](#general-info)
 * [Project Goals](#project-goals)
@@ -42,6 +44,7 @@ My current goals for the finished product are listed [below](#project-goals):
       - [ ] Scope IAM role trust to least privilege
       - [x] Update Actions workflow file
       - [ ] Audit role w/ Amazon CloudTrail logs
+    - [ ] Update pre-commit hooks
   - [ ] Separate Terraform modules further
     - [ ] Split 'website' into 's3' and 'networking'
     - [ ] Split 'lambda' into lambdas for each resource
