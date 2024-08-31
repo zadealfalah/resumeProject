@@ -23,23 +23,23 @@ jobs:
       #   terraform_version: 4.16.0 # Project uses ~> 4.16 atm.
 
     - name: Terraform Init
-      working-directory: resume_proj/src/terraform
+      working-directory: src/terraform
       run: terraform init
     
     - name: Terraform Format
-      working-directory: resume_proj/src/terraform
+      working-directory: src/terraform
       run: terraform fmt -recursive
 
     - name: Terraform Validate
-      working-directory: resume_proj/src/terraform
+      working-directory: src/terraform
       run: terraform validate
 
     - name: Terraform Plan
-      working-directory: resume_proj/src/terraform
+      working-directory: src/terraform
       run: terraform plan
 
     - name: Terraform Apply
-      working-directory: resume_proj/src/terraform
+      working-directory: src/terraform
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
       run: terraform apply -auto-approve
 
@@ -60,7 +60,7 @@ jobs:
       run: pip install flake8
 
     - name: Run Flake8
-      run: flake8 resume_proj/src/terraform/modules/lambda #Other folder paths can be added as needed, space delimited
+      run: flake8 src/terraform/modules/lambda #Other folder paths can be added as needed, space delimited
 
   # python-tests:
   #   name: Run Python Tests
