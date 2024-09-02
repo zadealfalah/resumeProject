@@ -1,4 +1,6 @@
-![CI/CD Pipeline](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg)
+![Main Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=main)
+![Dev Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=dev)
+
 # resumeProject
 An online resume currently deployed on AWS via Terraform.
 
