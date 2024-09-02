@@ -1,4 +1,7 @@
-![CI/CD Pipeline](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg)
+![Main Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=main)
+<!-- Add back in dev branch badge once CI/CD plan/apply properly done.  Output tf plan for review. -->
+<!-- ![Dev Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=dev) -->
+
 # resumeProject
 An online resume currently deployed on AWS via Terraform.
 
@@ -38,12 +41,13 @@ My current goals for the finished product are listed [below](#project-goals):
   - ⬜️ Add custom 404 html
     - ⬜️ Decide on layout of 404 document
   - ⬜️ Create CI/CD for website
-    - ⬜️ Inside of CI/CD Take outputs of TF as inputs for python
+    - ⬜️ Inside of CI/CD take outputs of TF as inputs for python
     - ⬜️ Use IAM roles for GitHub Actions / AWS via Terraform
       - ✅ Create OIDC provider trust relationship
       - ⬜️ Scope IAM role trust to least privilege
       - ✅ Update Actions workflow file
       - ⬜️ Audit role w/ Amazon CloudTrail logs
+    - ⬜️ Add Plan and Apply composite actions for dev/main
     - ⬜️ Update pre-commit hooks
   - ⬜️ Separate Terraform modules further
     - ⬜️ Split 'website' into 's3' and 'networking'
