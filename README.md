@@ -4,6 +4,7 @@
 
 # resumeProject
 An online resume currently deployed on AWS via Terraform.
+The project has currently completed the cloud resume challenge, and work is in progress to complete some new stretch goals.
 
 ## Table of Contents
 * [General Info](#general-info)
@@ -31,12 +32,12 @@ My current goals for the finished product are listed [below](#project-goals):
     - ✅ Create HTML for contact page
     - ✅ Create JS for contact page
     - ⬜️ Un-sandbox for SES permissions
-  - ⬜️ Add visitor counter
+  - ✅ Add visitor counter
     - ✅ Create visitor counter lambda
     - ✅ Create visitor counter html
     - ✅ Create visitor counter database (dynamodb)
     - ✅ Create visior counter JS
-    - ⬜️ Decide where to place counter in HTML
+    - ✅ Decide where to place counter in HTML
   - ⬜️ Add logging outside of AWS cloudwatch
   - ⬜️ Add custom 404 html
     - ⬜️ Decide on layout of 404 document
