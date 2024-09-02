@@ -1,5 +1,6 @@
 ![Main Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=main)
-![Dev Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=dev)
+<!-- Add back in dev branch badge once CI/CD plan/apply properly done.  Output tf plan for review. -->
+<!-- ![Dev Branch](https://github.com/zadealfalah/resumeProject/actions/workflows/pipeline.yml/badge.svg?branch=dev) -->
 
 # resumeProject
 An online resume currently deployed on AWS via Terraform.
