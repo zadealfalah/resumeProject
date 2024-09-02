@@ -4,16 +4,19 @@ on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
+      - dev
 
 env: 
   AWS_REGION : "us-east-1"
 
 permissions:
-      id-token: write   # This is required for requesting the JWT
-      contents: read    # This is required for actions/checkout
+      id-token: write   # Required for requesting the JWT
+      contents: read    # Required for actions/checkout
+    pull-requests: write   # Required for merging pull requests
 
 jobs:
   terraform:
@@ -31,10 +34,6 @@ jobs:
         role-session-name: GitHub_to_AWS_via_FederatedOIDC
         aws-region: ${{ env.AWS_REGION }}
     
-    # - name: Test AWS WhoAmI
-    #   run: |
-    #     aws sts get-caller-identity
-
     - name: Set up Terraform
       uses: hashicorp/setup-terraform@v3
 
@@ -99,3 +98,25 @@ jobs:
 
     # - name: Run Pytest
     #   run: pytest proj/src/pytests/tests
+
+  auto-merge:
+    name: Auto Merge dev to main on passing tests
+    runs-on: ubuntu-latest
+    needs: [terraform, python-style-check]
+    if: github.ref == 'refs/heads/dev' && success()
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Setup Git
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+
+    - name: Merge dev to main
+      run: |
+        git checkout main
+        git merge dev
+        git push origin main
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
