@@ -98,7 +98,6 @@ jobs:
 
     # - name: Run Pytest
     #   run: pytest proj/src/pytests/tests
-
   auto-merge:
     name: Auto Merge dev to main on passing tests
     runs-on: ubuntu-latest
